@@ -1,15 +1,10 @@
-
-
-
-#yaml file 
-
 services: 
    web:  
-    build: ./flask #use the dockerfile in this directory and build the image from that
+    build: ./flask 
     expose:
        - "5002"
     environment:
-     REDIS_HOST: 'redis' #tell docker engine what the env variables are set to 
+     REDIS_HOST: 'redis' 
      REDIS_PORT: 6379
      REDIS_DB: 0
     
@@ -17,9 +12,9 @@ services:
 
 
    redis:
-    build: ./redis #use the dockerfile in this directory and build the image from that
+    build: ./redis 
     volumes:
-     - redis_storage:/data #create a storage outside of container called redis_storage and store anything from /data in there 
+     - redis_storage:/data 
 
 
    reverse-proxy-nginx:
@@ -33,7 +28,7 @@ services:
 
 
 
-volumes:         #declare persisent storage 
+volumes:         
    redis_storage:
     
 
