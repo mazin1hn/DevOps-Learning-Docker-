@@ -1,0 +1,63 @@
+# =========================================================
+# GENERAL
+# =========================================================
+.DS_Store
+*.log
+*.tmp
+*.out
+*.err
+tmp/
+temp/
+
+# =========================================================
+# PYTHON (Flask service)
+# =========================================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# Prevent local dependencies from bloating the Docker context
+web_app/flask/venv/
+web_app/flask/__pycache__/
+
+# =========================================================
+# REDIS
+# =========================================================
+# Redis data files should NOT be copied into the image
+redis-data/
+*.rdb
+*.aof
+
+# =========================================================
+# NGINX
+# =========================================================
+# No large generated files but ignore editor junk
+web_app/nginx/*.swp
+
+# =========================================================
+# GIT
+# =========================================================
+.git
+.gitignore
+
+# =========================================================
+# DOCKER & COMPOSE
+# =========================================================
+docker-compose.override.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+
+
+README.md
+
+# =========================================================
+# ENVIRONMENT VARIABLES 
+# =========================================================
+.env
+.env.*
