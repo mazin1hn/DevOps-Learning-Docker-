@@ -6,7 +6,7 @@
 
 This repository documents my hands-on learning of Docker through one complete multi-container application project.
 
-The focus is on understanding how containers communicate, how services are orchestrated using Docker Compose, how reverse proxies work, and how state is persisted using volumes.
+The focus is on understanding how containers communicate, how services are orchestrated using Docker Compose, how reverse proxies work, how state is persisted using volumes, and how Dockerfiles are structured using multi-stage builds.
 
 All learning is applied directly through the [Web App](./web_app) project inside this repository.
 
@@ -35,11 +35,11 @@ This repository contains a single full multi-container project.
     ├── web_app/
     │   ├── flask/
     │   │   ├── app.py
-    │   │   └── dockerfile
+    │   │   └── Dockerfile
     │   ├── nginx/
     │   │   └── nginx.conf
     │   ├── redis/
-    │   │   └── dockerfile
+    │   │   └── Dockerfile
     │   ├── venv/
     │   ├── docker-compose.yml
     │   └── README.md
@@ -51,8 +51,8 @@ This repository contains a single full multi-container project.
 
 The [./web_app](./web_app) directory contains a full multi-container application composed of:
 
-- A Python Flask web application  
-- A Redis database used as a persistent key value store  
+- A Python Flask web application built using a multi-stage Dockerfile  
+- A Redis database used as a persistent key-value store  
 - An NGINX reverse proxy  
 - Docker Compose for orchestration  
 - Docker volumes for state persistence  
@@ -64,6 +64,8 @@ Each service runs inside its own container and communicates over internal Docker
 ## Core Docker Concepts Applied
 
 - Building custom images using Dockerfiles  
+- Multi-stage Docker builds for smaller and cleaner images  
+- Running containers as non-root users  
 - Service orchestration using Docker Compose  
 - Internal container networking and DNS resolution  
 - Environment variable configuration  
@@ -101,12 +103,12 @@ Once all services are running, open your browser:
 Each refresh on `/count` increments the value stored in Redis.
 
 
+
 ## Documentation
 
 The full technical breakdown of the project is located inside:
 
-   - [Web App Project README](./web_app/README.md)
-
+- [Web App Project README](./web_app/README.md)
 
 
 

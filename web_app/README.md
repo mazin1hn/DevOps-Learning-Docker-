@@ -109,17 +109,31 @@ This mirrors how real production systems handle traffic routing.
 
 ### Flask Dockerfile
 
-This Dockerfile builds a lightweight Python runtime for the Flask application.
+This Dockerfile uses a **multi-stage build** to create a lightweight and more secure Flask runtime.
 
-    FROM python:3.8-slim
+The build stage installs application dependencies, while the runtime stage copies only the required files and runs the application as a non-root user.
+
+    # Build stage
+    FROM python:3.13-alpine AS build
 
     WORKDIR /app
 
+    COPY requirements.txt .
+
+    RUN pip install --no-cache-dir -r requirements.txt
+
+    # Runtime stage
+    FROM python:3.13-alpine
+
+    WORKDIR /app
+
+    COPY --from=build /usr/local/lib/python3.13/site-packages \
+                      /usr/local/lib/python3.13/site-packages
+
     COPY app.py .
 
-    RUN pip install flask redis
-
-    EXPOSE 5002
+    RUN adduser -D appuser
+    USER appuser
 
     CMD ["python", "app.py"]
 
