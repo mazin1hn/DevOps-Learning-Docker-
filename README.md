@@ -1,14 +1,14 @@
-# Docker Learning and Project Repository
+# Docker Project Repository
 
 
 
 ## Overview
 
-This repository documents my hands-on learning of Docker through one complete multi-container application project.
+This repository documents my hands-on implementation of Docker through one complete multi-container application project.
 
 The focus is on understanding how containers communicate, how services are orchestrated using Docker Compose, how reverse proxies work, how state is persisted using volumes, and how Dockerfiles are structured using multi-stage builds.
 
-All learning is applied directly through the [Web App](./web_app) project inside this repository.
+All work is applied directly through the [Web App](./web_app) project inside this repository.
 
 
 
